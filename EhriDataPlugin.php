@@ -15,7 +15,8 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
     private $TEMPLATES = array(
         'Repository' => 'institution.twig',
         'HistoricalAgent' => 'authority.twig',
-        'DocumentaryUnit' => 'unit.twig'
+        'DocumentaryUnit' => 'unit.twig',
+        'VirtualUnit' => 'virtual.twig'
     );
 
     const API_MIMETYPE = 'application/vnd.api+json';

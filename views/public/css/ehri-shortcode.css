@@ -50,6 +50,10 @@
     color: #6c003b;
 }
 
+.ehri-item .ehri-item-heading.VirtualUnit a {
+    color: #544F5F;
+}
+
 .ehri-item .ehri-item-details {
     font-size: .85em;
 }
