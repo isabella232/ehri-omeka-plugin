@@ -16,3 +16,7 @@ example:
 Would result in something like:
 
 ![Short code example](ehri_item_data_example.png)
+
+## Installation
+
+Extract the source root to a directory called `EhriData` in the Omeka `plugins/` folder. **Note**: you must use the name `EhriData` or Omeka will not recognise the plugin correctly.
