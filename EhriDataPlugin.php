@@ -16,7 +16,8 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
         'Repository' => 'institution.twig',
         'HistoricalAgent' => 'authority.twig',
         'DocumentaryUnit' => 'unit.twig',
-        'VirtualUnit' => 'virtual.twig'
+        'VirtualUnit' => 'virtual.twig',
+        'Country' => 'country.twig'
     );
 
     const API_MIMETYPE = 'application/vnd.api+json';
@@ -63,6 +64,14 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
         set_option('ehri_shortcode_uri_configuration', trim($_POST['ehri_shortcode_uri_configuration']));
     }
 
+    /**
+     * @param $args
+     * @param $view
+     * @return string
+     * @throws Twig_Error_Loader
+     * @throws Twig_Error_Runtime
+     * @throws Twig_Error_Syntax
+     */
     public function ehri_item_data($args, $view)
     {
         $id = $args["id"];
@@ -86,6 +95,8 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
             $data["included"] = $json["included"];
         }
 
-        return $this->twig->render($this->TEMPLATES[$type], $data);
+        return array_key_exists($type, $this->TEMPLATES)
+            ? $this->twig->render($this->TEMPLATES[$type], $data)
+            : "";
     }
 }
