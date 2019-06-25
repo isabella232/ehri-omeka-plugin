@@ -79,7 +79,12 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
         $headers = ['Accept' => self::API_MIMETYPE];
 
         $base = get_option('ehri_shortcode_uri_configuration', self::DEFAULT_API_BASE);
-        $response = Requests::get($base . $id, $headers);
+        try {
+            $response = Requests::get($base . $id, $headers);
+        } catch (Exception $e) {
+            error_log($e->getTraceAsString());
+            return '<pre>Error requesting EHRI API data.</pre>';
+        }
 
         if (!$response->success) {
             return '<pre>Error requesting EHRI API data: [' . $response->status_code . ']: ' . $response->body . '</pre>';
