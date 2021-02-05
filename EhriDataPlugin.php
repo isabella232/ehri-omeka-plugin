@@ -1,8 +1,6 @@
 <?php
 
-require_once('vendor/autoload.php');
-
-Requests::register_autoloader();
+require_once(__DIR__.'/vendor/autoload.php');
 
 
 class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
@@ -27,6 +25,7 @@ class EhriDataPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function __construct()
     {
+        Requests::register_autoloader();
         $loader = new Twig_Loader_Filesystem(array(
             dirname(__FILE__) . '/views/public/templates'
         ));
